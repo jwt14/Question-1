@@ -5,6 +5,37 @@
 
 using namespace std;
 
+TriMatrix MakeIdentityMatrix(int N_x)
+{
+     TriMatrix Identity(N_x+2);
+     for (int i=2; i <=N_x;i++){
+                    Identity(i,i) = 1;
+                    Identity(i,i-1) = 0;
+                    Identity(i,i+1) = 0;
+    }
+    Identity(1,1) = 1;
+    Identity(N_x+1,N_x+1) = 1;
+    Identity(1,2) = 0;
+    Identity(N_x+1,N_x) = 0;
+    return Identity;
+}
+
+TriMatrix MakeSpatialOpMatrix(int N_x, double nu)
+{
+     TriMatrix Spatial(N_x+2);
+     for (int i=2; i <=N_x;i++){
+                    Spatial(i,i) = -2*nu;
+                    Spatial(i,i-1) = nu;
+                    Spatial(i,i+1) = nu;
+    }
+    Spatial(1,1) = 0;
+    Spatial(N_x+1,N_x+1) = 0;
+    Spatial(1,2) = 0;
+    Spatial(N_x+1,N_x) = 0;
+
+    return Spatial;
+}
+
 void validating(double &vIn){
     while(1){
         if(cin.fail()){
