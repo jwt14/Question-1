@@ -45,7 +45,7 @@ TriMatrix MakeSpatialOpMatrix(int N_x, double nu){
 }
 
  /*----------------------------- Printing and input-validating functions for both doubles and integers ----------------------------------------------------------------*/
-void print_vector(vector<double> U, char vector_filename[128]){
+void print_vector(vector<double> U, const char vector_filename[128]){
     ofstream output_file(vector_filename);
     ostream_iterator<double> output_iterator(output_file, "\n");
     copy(U.begin(), U.end(), output_iterator);
@@ -85,7 +85,7 @@ int main() {
     cout << "Bar length is 1 unit, Number of steps is 100, Time domain is 10 second with 0.001 timestep. Diffusion coefficient is 1." << endl;
 
     /*----------------------------- Declaring variables and prompting for input with validation -----------------------------------------------------------------------*/
-    double L, T, theta;
+    double L, T;
     int N_x,N_t;
 
     cout << "\nLength of a domain = "; cin >> L; validating(L);
