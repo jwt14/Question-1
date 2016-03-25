@@ -29,12 +29,12 @@ TriMatrix MakeIdentityMatrix(int N_x){
     return Identity;
 }
 
-TriMatrix MakeSpatialOpMatrix(int N_x, double nu){
+TriMatrix MakeSpatialOpMatrix(int N_x){
      TriMatrix Spatial(N_x+2);
      for (int i=2; i <=N_x;i++){
-                    Spatial(i,i) = -2*nu;
-                    Spatial(i,i-1) = nu;
-                    Spatial(i,i+1) = nu;
+                    Spatial(i,i) = -2;
+                    Spatial(i,i-1) = 1;
+                    Spatial(i,i+1) = 1;
     }
     Spatial(1,1) = 0;
     Spatial(N_x+1,N_x+1) = 0;
@@ -113,9 +113,9 @@ int main() {
     TriMatrix l(N_x+2);
     TriMatrix A(N_x+2);
 
-    l = MakeSpatialOpMatrix(N_x, nu);                                                   //Lowercase l as uppercase is reserved for bar length!
+    l = MakeSpatialOpMatrix(N_x);                                                   //Lowercase l as uppercase is reserved for bar length!
     I = MakeIdentityMatrix(N_x);
-    A = I+l;                                                                            //Generating A matrix with (v, 1-2v, v)
+    A = I+l*nu;                                                                            //Generating A matrix with (v, 1-2v, v)
 
     for(double k=0;k<N_t;++k){
         u = A * u_0;                                                                    //Implementing for loop with an overloaded vector-matrix multiplication
