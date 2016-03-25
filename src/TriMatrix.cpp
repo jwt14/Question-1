@@ -63,10 +63,10 @@ double& TriMatrix::operator() (unsigned int pRow, unsigned int pCol) {
         return mDiag[pRow-1];
     }
     else if (pCol == pRow-1) {
-        return mLower[pCol-1];
+        return mLower[pRow-1];
     }
     else if (pCol == pRow+1) {
-        return mUpper[pCol-1];
+        return mUpper[pRow-1];
     }
     else {
         mZero = 0;
@@ -167,22 +167,22 @@ TriMatrix& TriMatrix::operator/=(const double& pVal) {
     return *this;
 }
 
-vector<double> TriMatrix::operator* (const vector<double> U)  {
+vector<double> TriMatrix::operator* ( vector<double> U)  {
     int m = U.size();
     vector<double> u2(m, 0.0);
     double sum=0;
-    for (int i=0;i<m;i++){
+    for (int i=1;i<m-1;i++){
         sum=0;
-        for(int j=0;j<m;j++){
+        for(int j=1;j<m-1;j++){
             if(i==j){
-					sum=sum+mDiag[i]*U[i];
-				}
-            else if(j==i-1){
-					sum=sum+mLower[j]*U[i-1];
-				}
-            else if(j==i+1){
-					sum=sum+mUpper[j]*U[i+1];
-				}
+                sum=sum+mDiag[i]*U[i];
+            }
+            else if(j==i-1)	{
+                sum=sum+mLower[j]*U[i-1];
+            }
+            else if(j==i+1)	{
+                sum=sum+mUpper[j]*U[i+1];
+            }
         }
         u2[i]=sum;
     }

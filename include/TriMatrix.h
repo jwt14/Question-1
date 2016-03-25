@@ -20,7 +20,7 @@ class TriMatrix {
         TriMatrix  operator+  (const TriMatrix& pSrc);
         TriMatrix  operator-  (const TriMatrix& pSrc);
         TriMatrix  operator*  (const double&    pVal);
-        vector<double> operator* (const vector<double> U) ;
+        vector<double> operator* (vector<double> U) ;
 
         TriMatrix  operator/  (const double&    pVal);
 
