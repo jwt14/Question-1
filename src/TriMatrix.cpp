@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+#include <vector>
 using namespace std;
 
 #include "TriMatrix.h"
@@ -164,6 +165,28 @@ TriMatrix& TriMatrix::operator/=(const double& pVal) {
         mUpper[i] *= vTmp;
     }
     return *this;
+}
+
+vector<double> TriMatrix::operator* (const vector<double> U)  {
+    int m = U.size();
+    vector<double> u2(m, 0.0);
+    double sum=0;
+    for (int i=0;i<m;i++){
+        sum=0;
+        for(int j=0;j<m;j++){
+            if(i==j){
+					sum=sum+mDiag[i]*U[i];
+				}
+            else if(j==i-1){
+					sum=sum+mLower[j]*U[i-1];
+				}
+            else if(j==i+1){
+					sum=sum+mUpper[j]*U[i+1];
+				}
+        }
+        u2[i]=sum;
+    }
+    return u2;
 }
 
 void TriMatrix::print() {

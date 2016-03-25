@@ -1,5 +1,6 @@
 #ifndef CLASS_TRIMATRIX
 #define CLASS_TRIMATRIX
+#include <vector>
 
 using namespace std;
 class TriMatrix {
@@ -19,7 +20,7 @@ class TriMatrix {
         TriMatrix  operator+  (const TriMatrix& pSrc);
         TriMatrix  operator-  (const TriMatrix& pSrc);
         TriMatrix  operator*  (const double&    pVal);
-
+        vector<double> operator* (const vector<double> U) ;
 
         TriMatrix  operator/  (const double&    pVal);
 
