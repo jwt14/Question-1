@@ -87,7 +87,13 @@ int main() {
     double alpha;
     cout << "\nThermal conductivity (alpha) = "; cin >> alpha; validating(alpha);
     double nu = alpha*(del_t/pow(del_x,2));
-    cout << "\nCourant number = " << nu << endl << endl;
+
+    if (nu >= 0.5){
+        cout << "\nCourant number is " << nu << " and scheme is unstable!" << endl << endl;
+    }
+    else{
+        cout << "\nCourant number is " << nu << " and scheme is stable!" << endl << endl;
+    }
 
     vector<double> u_0, u;
     for(int j=0; j<N_x+1; j++){
@@ -101,6 +107,7 @@ int main() {
     l = MakeSpatialOpMatrix(N_x, nu);
     I = MakeIdentityMatrix(N_x);
     A = I+l;
+
     for(double k=0;k<N_t;++k){
         u = A * u_0;
         u_0 = u;
