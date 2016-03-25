@@ -2,7 +2,9 @@
 #include <math.h>
 #include <limits>
 #include <vector>
-
+#include <fstream>
+#include "TriMatrix.h"
+#include <iterator>
 using namespace std;
 
 TriMatrix MakeIdentityMatrix(int N_x)
@@ -34,6 +36,12 @@ TriMatrix MakeSpatialOpMatrix(int N_x, double nu)
     Spatial(N_x+1,N_x) = 0;
 
     return Spatial;
+}
+
+void print_vector(vector<double> U, char vector_filename[128]){
+	    ofstream output_file(vector_filename);
+        ostream_iterator<double> output_iterator(output_file, "\n");
+        copy(U.begin(), U.end(), output_iterator);
 }
 
 void validating(double &vIn){
@@ -85,6 +93,5 @@ int main() {
     for(int j=0; j<N_x+1; j++){
          u_0.push_back(j*del_x-pow(j*del_x,2));
      }
-
     return 0;
 }

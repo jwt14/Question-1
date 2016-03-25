@@ -4,3 +4,13 @@
 	<math.h>
 	<limits>
 
+1458926144 source:c:\users\w530\desktop\ae3_422_assessment\question-1\src\trimatrix.cpp
+	<iostream>
+	<iomanip>
+	<cstring>
+	<vector>
+	"TriMatrix.h"
+
+1458926086 c:\users\w530\desktop\ae3_422_assessment\question-1\include\trimatrix.h
+	<vector>
+
