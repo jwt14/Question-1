@@ -89,9 +89,23 @@ int main() {
     double nu = alpha*(del_t/pow(del_x,2));
     cout << "\nCourant number = " << nu << endl << endl;
 
-    vector<double> u_0;
+    vector<double> u_0, u;
     for(int j=0; j<N_x+1; j++){
          u_0.push_back(j*del_x-pow(j*del_x,2));
      }
+
+    TriMatrix I(N_x+2);
+    TriMatrix l(N_x+2);
+    TriMatrix A(N_x+2);
+
+    l = MakeSpatialOpMatrix(N_x, nu);
+    I = MakeIdentityMatrix(N_x);
+    A = I+l;
+    for(double k=0;k<N_t;++k){
+        u = A * u_0;
+        u_0 = u;
+    }
+    print_vector(u,"FEsolution.dat");
+
     return 0;
 }
