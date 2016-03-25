@@ -1,11 +1,14 @@
+//  HPC_Q1
+//
+//  Created by Jan Witold Tomaszewski  CID: 00833865.
+
 #include <iostream>
 #include <iomanip>
 #include <cstring>
 #include <vector>
-using namespace std;
-
 #include "TriMatrix.h"
 
+using namespace std;
 
 TriMatrix::TriMatrix(const unsigned int pSize)
         : mSize(pSize),
@@ -54,9 +57,9 @@ TriMatrix& TriMatrix::operator=(const TriMatrix& pSrc) {
     return *this;
 }
 
-double& TriMatrix::operator() (unsigned int pRow, unsigned int pCol) {
-    if (pRow >= mSize || pCol >= mSize) {
-        cout << "Index out of range." << endl;
+double& TriMatrix::operator() (unsigned int pRow, unsigned int pCol) {          //Indexing operator
+    if (pRow >= mSize || pCol >= mSize) {                                       //Allows to allocate numbers to a TriMatrix
+        cout << "Index out of range." << endl;                                  //Starts with 1 (not with 0) as in usual Mathematic notation
         throw;
     }
     else if (pRow == pCol) {
@@ -167,20 +170,21 @@ TriMatrix& TriMatrix::operator/=(const double& pVal) {
     return *this;
 }
 
-vector<double> TriMatrix::operator* ( vector<double> U)  {
+vector<double> TriMatrix::operator* ( vector<double> U)  {              //Vector x Matrix multiplication
     int m = U.size();
-    vector<double> u2(m, 0.0);
+    vector<double> u2(m, 0.0);                                          //Vector storing result
+
     double sum=0;
-    for (int i=1;i<m-1;i++){
-        sum=0;
+    for (int i=1;i<m-1;i++){                                            //Performing multiplication apart from 1st and last rows
+        sum=0;                                                          //As the value should remain zero at the boundary conditions
         for(int j=1;j<m-1;j++){
             if(i==j){
                 sum=sum+mDiag[i]*U[i];
             }
-            else if(j==i-1)	{
+            else if(j==i-1){
                 sum=sum+mLower[j]*U[i-1];
             }
-            else if(j==i+1)	{
+            else if(j==i+1){
                 sum=sum+mUpper[j]*U[i+1];
             }
         }

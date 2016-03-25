@@ -1,12 +1,15 @@
 # depslib dependency file v1.0
-1458931148 source:c:\users\w530\desktop\ae3_422_assessment\question-1\main.cpp
+1458935212 source:c:\users\w530\desktop\ae3_422_assessment\question-1\main.cpp
 	<iostream>
-	<math.h>
-	<limits>
 	<vector>
+	<stdio.h>
+	<math.h>
+	<algorithm>
+	<iomanip>
+	<limits>
 	<fstream>
-	"TriMatrix.h"
 	<iterator>
+	"TriMatrix.h"
 
 1458926144 source:c:\users\w530\desktop\ae3_422_assessment\question-1\src\trimatrix.cpp
 	<iostream>
@@ -15,6 +18,6 @@
 	<vector>
 	"TriMatrix.h"
 
-1458926086 c:\users\w530\desktop\ae3_422_assessment\question-1\include\trimatrix.h
+1458935244 c:\users\w530\desktop\ae3_422_assessment\question-1\include\trimatrix.h
 	<vector>
 
