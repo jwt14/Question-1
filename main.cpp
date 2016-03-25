@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <limits>
+#include <vector>
 
 using namespace std;
 
@@ -48,5 +49,11 @@ int main() {
     cout << "\nThermal conductivity (alpha) = "; cin >> alpha; validating(alpha);
     double nu = alpha*(del_t/pow(del_x,2));
     cout << "\nCourant number = " << nu << endl << endl;
+
+    vector<double> u_0;
+    for(int j=0; j<N_x+1; j++){
+         u_0.push_back(j*del_x-pow(j*del_x,2));
+     }
+
     return 0;
 }
