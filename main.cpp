@@ -85,10 +85,10 @@ void validating(int &vIn){
 
 int main() {
     /*----------------------------- Program description ---------------------------------------------------------------------------------------------------------------*/
-
-    cout << "This is HPC Q1 solution. It provides a solution to a heat equation problem in a form of a temerature vectors." << endl;
-    cout << "Bar length is 1 unit, Number of steps is 100, Time domain is 10 second with 0.001 timestep. Diffusion coefficient is 1." << endl;
-
+    //
+    //  This is HPC Q1 solution. It provides a solution to a heat equation problem in a form of a temerature vectors.
+    //  Bar length is 1 unit, Number of steps is 1000, Time domain is 1 second with 0.001 timestep. Diffusion coefficient is 1.
+    //
     /*----------------------------- Declaring variables and prompting for input with validation -----------------------------------------------------------------------*/
     double L, T;
     int N_x,N_t;
@@ -118,9 +118,9 @@ int main() {
     TriMatrix l(N_x+2);
     TriMatrix A(N_x+2);
 
-    l = MakeSpatialOpMatrix(N_x);                                                   //Lowercase l as uppercase is reserved for bar length!
+    l = MakeSpatialOpMatrix(N_x);                                                       //Lowercase l as uppercase is reserved for bar length!
     I = MakeIdentityMatrix(N_x);
-    A = I+l*nu;                                                                            //Generating A matrix with (v, 1-2v, v)
+    A = I+l*nu;                                                                         //Generating A matrix with (v, 1-2v, v)
 
     for(double k=0;k<N_t;++k){
         u = A * u_0;                                                                    //Implementing for loop with an overloaded vector-matrix multiplication
