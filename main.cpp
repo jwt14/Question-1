@@ -47,8 +47,13 @@ TriMatrix MakeSpatialOpMatrix(int N_x){
  /*----------------------------- Printing and input-validating functions for both doubles and integers ----------------------------------------------------------------*/
 void print_vector(vector<double> U, const char vector_filename[128]){
     ofstream output_file(vector_filename);
-    ostream_iterator<double> output_iterator(output_file, "\n");
+    ostream_iterator<double> output_iterator(output_file, "\n");        //Final solution is saved as a text file
     copy(U.begin(), U.end(), output_iterator);
+    int m = U.size();
+    cout << "The final solution is:" << endl;                           //Final solution is printed to a terminal
+    for (int i=0;i<m;++i){
+        cout << U[i] << endl;
+    }
 }
 
 void validating(double &vIn){
