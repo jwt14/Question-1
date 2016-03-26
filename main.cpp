@@ -53,7 +53,7 @@ void print_vector(vector<double> U, const char vector_filename[128]){
 
 void validating(double &vIn){
     while(1){
-        if(cin.fail()){
+        if(cin.fail() || vIn <= 0){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             cout<<"You have entered wrong input"<<endl;
@@ -66,7 +66,7 @@ void validating(double &vIn){
 
 void validating(int &vIn){
     while(1){
-        if(cin.fail()){
+        if(cin.fail() || vIn <= 0){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             cout<<"You have entered wrong input"<<endl;
